@@ -12,6 +12,10 @@
     display: flex;
     flex-wrap: wrap;
     padding: 0.5rem;
+    justify-content: space-between;
+    background-color: #363636;
+    color: aliceblue;
+    align-items: center;
 }
 
 .navbar h2{
@@ -23,6 +27,10 @@
     color: var(--theme-color);
 }
 
-.navbar .icon{
-    color: var(--theme-color);
+.navbar .shop, .cartIcon{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 1rem 0.5rem 1rem;
 }

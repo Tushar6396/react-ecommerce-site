@@ -1,5 +1,7 @@
 import Header from './Components/Header';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Shop from './Components/Shop';
+import Cart from './Components/Cart';
 
 function App() {
   return (
@@ -7,8 +9,8 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path='/' />
-          <Route path='/cart' />
+          <Route path='/' element={<Shop />} />
+          <Route path='/cart' element={<Cart />} />
         </Routes>
       </Router>
 
