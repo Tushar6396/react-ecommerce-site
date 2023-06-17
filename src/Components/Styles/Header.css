@@ -1,0 +1,28 @@
+:root{
+    --theme-color: #ea8317
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.navbar{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.navbar h2{
+    font-weight: 600;
+}
+
+.navbar h2 span{
+    font-weight: 600;
+    color: var(--theme-color);
+}
+
+.navbar .icon{
+    color: var(--theme-color);
+}
