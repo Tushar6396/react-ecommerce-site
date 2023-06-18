@@ -5,12 +5,13 @@ import './Styles/Shop.css'
 function Shop() {
   const [data, setData] = useState([])
 
+  const getApiData = async() => {
+    const res = await axios.get('https://fakestoreapi.com/products')
+    setData(res.data)
+  }
+
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-    .then((res) => setData(res.data))
-    .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+    getApiData()
   },[])
 
   return (

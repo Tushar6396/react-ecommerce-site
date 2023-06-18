@@ -14,5 +14,23 @@
 .card{
     border: 1px solid #363636;
     padding: 1rem;
-    
+    border-radius: 1rem;
+    background-color: #363636;
+    color: aliceblue;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover{
+    box-shadow: 0 0 1rem var(--theme-color);
+    scale: 1.02;
+}
+
+.card .image{
+    background: transparent;
+    margin: 1rem;
+}
+
+.card .category{
+    margin-bottom: 5px;
 }
