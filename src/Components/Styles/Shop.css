@@ -1,0 +1,18 @@
+.heading{
+    text-align: center;
+    color: var(--theme-color);
+    margin-top: 1rem;
+}
+
+.products{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    margin: 1rem;
+}
+
+.card{
+    border: 1px solid #363636;
+    padding: 1rem;
+    
+}
