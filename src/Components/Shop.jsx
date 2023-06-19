@@ -2,12 +2,17 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import './Styles/Shop.css'
 
+
 function Shop() {
   const [data, setData] = useState([])
 
   const getApiData = async() => {
-    const res = await axios.get('https://fakestoreapi.com/products')
-    setData(res.data)
+    try{
+      const res = await axios.get('https://fakestoreapi.com/products')
+      setData(res.data)
+    }catch(error){
+      console.log(error)
+    }
   }
 
   useEffect(() => {
@@ -18,15 +23,21 @@ function Shop() {
     <>
       <h1 className='heading'>Products Available</h1>
       <div className="products">
-        {data.map((post) => {
-          const { id, title, category, description, image, price } = post;
-          return <div className="card" key={id}>
+        {data.map((product) => {
+          const { id, title, category, description, image, price } = product;
+          return <div
+            id={id}
+            className="card" 
+            key={id} >
+
               <h2 className="category">{category.toUpperCase()}</h2>
-              <h3 className='title'>{title.toUpperCase().slice(1,30)}</h3>
+              <h3 className='title'>{title.toUpperCase().slice(1,20)}</h3>
               <img src={image} alt="" className='image' 
-              style={{ maxWidth: '100%', maxHeight: '100px' }}/>
-              <p className="description">{description.slice(1,100)}</p>
-              <span className='price'>Price: {price}</span>
+              style={{ maxWidth: '150%', maxHeight: '100px' }}/>
+              <p className="description">{description.slice(1,90)}</p>
+              <p className='price'><b>Price: {price}</b></p>
+              <button className='btn'>Add To Cart</button>
+
             </div>  
         })}
       </div>

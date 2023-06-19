@@ -19,11 +19,12 @@
     color: aliceblue;
     transition: 0.3s;
     text-align: center;
+    text-decoration: none;
 }
 
 .card:hover{
     box-shadow: 0 0 1rem var(--theme-color);
-    scale: 1.02;
+    scale: 1.01;
 }
 
 .card .image{
@@ -33,4 +34,25 @@
 
 .card .category{
     margin-bottom: 5px;
+}
+
+.card .price{
+    margin: 0.5rem;
+}
+
+.card .btn{
+    border-radius: 1rem;
+    background-color: var(--theme-color);
+    color: aliceblue;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    margin: 0.5rem;
+    transition: 0.3s;
+}
+
+.card .btn:hover{
+    cursor: pointer;
+    background-color: aliceblue;
+    color: var(--theme-color);
 }
