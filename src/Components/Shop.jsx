@@ -5,6 +5,7 @@ import './Styles/Shop.css'
 
 function Shop() {
   const [data, setData] = useState([])
+  const [cartBtnClicked, setCartBtnClicked] = useState(false)
 
   const getApiData = async() => {
     try{
@@ -18,6 +19,10 @@ function Shop() {
   useEffect(() => {
     getApiData()
   },[])
+
+  function handleAddToCart(id){
+    setCartBtnClicked(!cartBtnClicked)
+  }
 
   return (
     <>
@@ -36,7 +41,11 @@ function Shop() {
               style={{ maxWidth: '150%', maxHeight: '100px' }}/>
               <p className="description">{description.slice(1,90)}</p>
               <p className='price'><b>Price: {price}</b></p>
-              <button className='btn'>Add To Cart</button>
+              <button className='btn'
+              onClick={() => handleAddToCart(id)}
+              >
+                {cartBtnClicked ? 'Add To Cart' : 'Added To Cart'}
+              </button>
 
             </div>  
         })}
