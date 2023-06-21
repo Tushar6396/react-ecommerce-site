@@ -29,17 +29,18 @@ function Shop() {
       <h1 className='heading'>Products Available</h1>
       <div className="products">
         {data.map((product) => {
-          const { id, title, category, description, image, price } = product;
+          const { id, title, category, image, price } = product;
           return <div
             id={id}
             className="card" 
             key={id} >
 
               <h2 className="category">{category.toUpperCase()}</h2>
-              <h3 className='title'>{title.toUpperCase().slice(1,20)}</h3>
+              
               <img src={image} alt="" className='image' 
               style={{ maxWidth: '150%', maxHeight: '100px' }}/>
-              <p className="description">{description.slice(1,90)}</p>
+              <h3 className='title'>{title.toUpperCase().slice(1,20)}</h3>
+
               <p className='price'><b>Price: {price}</b></p>
               <button className='btn'
               onClick={() => handleAddToCart(id)}
