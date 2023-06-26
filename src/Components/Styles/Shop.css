@@ -56,3 +56,8 @@
     background-color: aliceblue;
     color: var(--theme-color);
 }
+
+.card .btn:disabled{
+    background-color: aliceblue;
+    color: var(--theme-color);
+}

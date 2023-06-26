@@ -5,7 +5,7 @@ import './Styles/Shop.css'
 
 function Shop() {
   const [data, setData] = useState([])
-  const [cartBtnClicked, setCartBtnClicked] = useState(false)
+  const [cartBtnClicked, setCartBtnClicked] = useState({})
 
   const getApiData = async() => {
     try{
@@ -20,8 +20,11 @@ function Shop() {
     getApiData()
   },[])
 
-  function handleAddToCart(id){
-    setCartBtnClicked(!cartBtnClicked)
+  function handleAddToCart(id) {
+    setCartBtnClicked((prevClicked) => ({
+      ...prevClicked,
+      [id]: !prevClicked[id],
+    }));
   }
 
   return (
@@ -30,10 +33,12 @@ function Shop() {
       <div className="products">
         {data.map((product) => {
           const { id, title, category, image, price } = product;
+          const isAddedToCart = cartBtnClicked[id]
+
           return <div
             id={id}
             className="card" 
-            key={id} >
+            key={product.id} >
 
               <h2 className="category">{category.toUpperCase()}</h2>
               
@@ -41,11 +46,12 @@ function Shop() {
               style={{ maxWidth: '150%', maxHeight: '100px' }}/>
               <h3 className='title'>{title.toUpperCase().slice(1,20)}</h3>
 
-              <p className='price'><b>Price: {price}</b></p>
+              <p className='price'><b>Price: ${price}</b></p>
               <button className='btn'
+              disabled={isAddedToCart}
               onClick={() => handleAddToCart(id)}
               >
-                {cartBtnClicked ? 'Add To Cart' : 'Added To Cart'}
+                {isAddedToCart ? 'Added To Cart' : 'Add To Cart'}
               </button>
 
             </div>  
