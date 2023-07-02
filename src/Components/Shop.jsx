@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from "axios";
 import './Styles/Shop.css'
+import { ShopContext } from './ShopContext';
 
 
 function Shop() {
   const [data, setData] = useState([])
-  const [cartBtnClicked, setCartBtnClicked] = useState({})
+  const { addToCart } = useContext(ShopContext)
 
   const getApiData = async() => {
     try{
@@ -20,11 +21,8 @@ function Shop() {
     getApiData()
   },[])
 
-  function handleAddToCart(id) {
-    setCartBtnClicked((prevClicked) => ({
-      ...prevClicked,
-      [id]: !prevClicked[id],
-    }));
+  function handleAddToCart(product) {
+    addToCart(product)
   }
 
   return (
@@ -33,7 +31,7 @@ function Shop() {
       <div className="products">
         {data.map((product) => {
           const { id, title, category, image, price } = product;
-          const isAddedToCart = cartBtnClicked[id]
+        
 
           return <div
             id={id}
@@ -44,14 +42,15 @@ function Shop() {
               
               <img src={image} alt="" className='image' 
               style={{ maxWidth: '150%', maxHeight: '100px' }}/>
+              
               <h3 className='title'>{title.toUpperCase().slice(1,20)}</h3>
 
               <p className='price'><b>Price: ${price}</b></p>
+              
               <button className='btn'
-              disabled={isAddedToCart}
-              onClick={() => handleAddToCart(id)}
+              onClick={() => handleAddToCart(product)}
               >
-                {isAddedToCart ? 'Added To Cart' : 'Add To Cart'}
+                Add To Cart
               </button>
 
             </div>  
