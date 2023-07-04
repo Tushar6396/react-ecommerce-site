@@ -7,6 +7,7 @@ export const ShopContextProvider = ({ children }) => {
 
     const addToCart = (product) => {
         setCart((prevCart) => [...prevCart,product])
+        localStorage.setItem('cart', JSON.stringify(cart))
     }
 
     const clearCart = () => {

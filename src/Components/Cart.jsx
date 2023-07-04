@@ -4,19 +4,19 @@ import { ShopContext } from './ShopContext'
 
 function Cart() {
 
-  const { cart } = useContext(ShopContext)
+  const { cart, clearCart } = useContext(ShopContext)
   const [itemCount, setItemCount] = useState(1);
 
-  // const handleIncreaseCount = (item) => {
-  //   setItemCount((prevCount) => prevCount + 1)
-  // }
+  const handleIncreaseCount = () => {
+    setItemCount((prevCount) => prevCount + 1)
+  }
 
-  // const handleDecreaseCount = (item) => {
-  //   if (itemCount === 1) {
-  //     return
-  //   }
-  //   setItemCount((prevCount) => prevCount - 1)
-  // }
+  const handleDecreaseCount = () => {
+    if (itemCount === 1) {
+      return
+    }
+    setItemCount((prevCount) => prevCount - 1)
+  }
 
   return (
     <div className='cart-component'>
@@ -33,15 +33,15 @@ function Cart() {
                   <p>Price: ${item.price}</p>
                   </div>
                 <div className="counter">
-                  <button className='decrese-btn' >-</button>
+                  <button className='decrese-btn' onClick={handleDecreaseCount}>-</button>
                   <span>{itemCount}</span>
-                  <button className='increase-btn' >+</button>
+                  <button className='increase-btn' onClick={handleIncreaseCount}>+</button>
                 </div>          
               </div>
             </>
           ))}
           <div className="remove-btn">
-                  <button>Clear Cart</button>
+                  <button onClick={clearCart}>Clear Cart</button>
           </div> 
 
         </div>

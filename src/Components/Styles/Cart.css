@@ -21,6 +21,7 @@
 
 .cart-item h3{
     margin-top: 3rem;
+    max-width: 25%;
 }
 
 .cart-item p{
@@ -49,7 +50,7 @@
 }
 
 .remove-btn{
-    margin: 2rem 2rem 0 auto;  
+    margin: 2rem 2rem 2rem auto;  
 }
 
 .remove-btn button{
